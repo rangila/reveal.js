@@ -3,38 +3,97 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
-		<title>reveal.js</title>
+		<title>Scratch</title>
 
 		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css">
+		<link rel="stylesheet" href="dist/theme/white.css">
+
 
 		<!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="plugin/highlight/monokai.css">
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
-		</div>
+
+        <link rel="stylesheet" href="reveal.js-plugins/chalkboard/style.css">
+        <link rel="stylesheet" href="reveal.js-plugins/customcontrols/style.css">
 
 		<script src="dist/reveal.js"></script>
 		<script src="plugin/notes/notes.js"></script>
 		<script src="plugin/markdown/markdown.js"></script>
 		<script src="plugin/highlight/highlight.js"></script>
+
+        <script src="reveal.js-plugins/menu/menu.js"></script>
+        <script src="reveal.js-plugins/chalkboard/plugin.js"></script>
+        <script src="reveal.js-plugins/customcontrols/plugin.js"></script>
+
+
+        <link rel="stylesheet" href="reveal.js-plugins/menu/font-awesome/css/fontawesome.css">
+        <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+                <section> 
+                    <h1></h1>
+                </section>
+			</div>
+		</div>
+
 		<script>
 			// More info about initialization & config:
 			// - https://revealjs.com/initialization/
 			// - https://revealjs.com/config/
 			Reveal.initialize({
 				hash: true,
+                controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				mouseWheel: true,
+				menu: { // Menu works best with font-awesome installed: sudo apt-get install fonts-font-awesome
+					themes: false,
+					transitions: false,
+					markers: true,
+					hideMissingTitles: false,
+					custom: [
+				            { title: 'Boards', icon: '<i class="fa fa-external-link-alt"></i>', src: 'toc.html' },
+				        ]
+				},
+                customcontrols: {
+                    controls: [
+                        {
+                            id: 'toggle-overview',
+                            title: 'Toggle overview (O)',
+                            icon: '<i class="fa fa-th"></i>',
+                            action: 'Reveal.toggleOverview();'
+                        },
+                        {
+                            icon: '<i class="fa fa-pen-square"></i>',
+                            title: 'Toggle chalkboard (B)',
+                            action: 'RevealChalkboard.toggleChalkboard();'
+                        },
+                        {
+                            icon: '<i class="fa fa-pen"></i>',
+                            title: 'Toggle notes canvas (C)',
+                            action: 'RevealChalkboard.toggleNotesCanvas();'
+                        }
+                    ]
+                },
+				chalkboard: { // font-awesome.min.css must be available
+                    //src: "saved/chalkboard.json",
+					storage: "scratch-pad",
+                    theme: "chalkboard",
+				},
 
 				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
-			});
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMenu, RevealChalkboard, RevealCustomControls]
+			}).then( () => {
+                toggleChalkboard();
+            });
 		</script>
 	</body>
 </html>
