@@ -38,7 +38,21 @@
 		<div class="reveal">
 			<div class="slides">
                 <section> 
-                    <h1></h1>
+                    <h1>Slide 1</h1>
+                    <p class="fragment">Fragment 1</p>
+                    <p class="fragment">Fragment 2</p>
+                    <p class="fragment">Fragment 3</p>
+                    <p class="fragment">Fragment 4</p>
+                    <p class="fragment">Fragment 5</p>
+                    <p class="fragment">Fragment 6</p>
+                </section>
+                <section> 
+                    <h1>Slide 2</h1>
+                    <p class="fragment" data-fragment-index="2">Numbered fragment 1</p>
+                    <p class="fragment" data-fragment-index="1">Numbered fragment 2</p>
+                    <p class="fragment" data-fragment-index="5">Numbered fragment 3</p>
+                    <p class="fragment" data-fragment-index="4">Numbered fragment 4</p>
+                    <p class="fragment" data-fragment-index="3">Numbered fragment 5</p>
                 </section>
 			</div>
 		</div>
@@ -54,6 +68,7 @@
 				history: true,
 				center: true,
 				mouseWheel: true,
+                //transition: 'none',
 				menu: { // Menu works best with font-awesome installed: sudo apt-get install fonts-font-awesome
 					themes: false,
 					transitions: false,
@@ -84,7 +99,7 @@
                     ]
                 },
 				chalkboard: { // font-awesome.min.css must be available
-                    //src: "saved/chalkboard.json",
+                    src: "chalkboard.json",
 					storage: "scratch-pad",
                     theme: "chalkboard",
 				},
